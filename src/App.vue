@@ -1,28 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>秋秋的年龄是：{{age}}</div>
+    <div>我的的年龄是：{{myAge}}</div>
+    <!-- <div>a的的年龄是：{{$store.state.a.age}}</div>
+    <div>b的的年龄是：{{$store.state.b.age}}</div> -->
+    
+    <button @click="$store.commit('changeAgeSync', 10)">同步更新年龄</button>
+    <!-- <button @click="$store.dispatch('b/changeAgeAync', 10)">异步更新年龄</button> -->
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { mapState, mapGetters } from '@/vuex'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  computed: {
+    ...mapState(['age']),
+    ...mapGetters(['myAge'])
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
